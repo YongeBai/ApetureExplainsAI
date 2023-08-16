@@ -1,0 +1,9 @@
+[submodule "Wizard-Vicuna-13B-Uncensored-SuperHOT-8K-GPTQ"]
+	path = Wizard-Vicuna-13B-Uncensored-SuperHOT-8K-GPTQ
+	url = https://huggingface.co/TheBloke/Wizard-Vicuna-13B-Uncensored-SuperHOT-8K-GPTQ
+[submodule "Mangio-RVC-Fork"]
+	path = Mangio-RVC-Fork
+	url = https://github.com/YongeBai/Mangio-RVC-Fork.git
+[submodule "ai-voice-cloning"]
+	path = ai-voice-cloning
+	url = https://git.ecker.tech/yongebai/ai-voice-cloning.git
