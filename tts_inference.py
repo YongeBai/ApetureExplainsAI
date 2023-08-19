@@ -2,9 +2,9 @@ import argparse
 import os
 import re
 import subprocess
+
 import torch
 import torchaudio
-
 from tortoise.api import TextToSpeech
 from tortoise.utils.audio import load_voice
 
@@ -84,21 +84,25 @@ def rvc(paper_name: str):
     input_file_name = f"./audio/raw/{paper_name}.wav"
     model_path = "GlaDOS/glados2333333.pth"
     index_path = "./Mangio-RVC-Fork/logs/GlaDOS/added_IVF2170_Flat_nprobe_1.index"
-    
-    process = subprocess.Popen(["make", "run-cli"], cwd=PATH_TO_RVC, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)    
+
+    process = subprocess.Popen(
+        ["make", "run-cli"],
+        cwd=PATH_TO_RVC,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
     process.stdin.write(b"go infer\n")
     process.stdin.flush()
-    
-    args = (f"{model_path} {input_file_name} {output_file_name} {index_path}\n").encode()
+
+    args = (
+        f"{model_path} {input_file_name} {output_file_name} {index_path}\n"
+    ).encode()
     print(args)
-    process.stdin.write(args)    
+    process.stdin.write(args)
     process.stdin.flush()
 
     stdout, stderr = process.communicate()
-
-    print("Output:", stdout)
-    print("Error:", stderr)
-    
 
 
 def main():
@@ -114,6 +118,7 @@ def main():
 
     tts(paper_name)
     rvc(paper_name)
+
 
 if __name__ == "__main__":
     main()
