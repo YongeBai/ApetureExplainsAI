@@ -84,9 +84,21 @@ def rvc(paper_name: str):
     input_file_name = f"./audio/raw/{paper_name}.wav"
     model_path = "GlaDOS/glados2333333.pth"
     index_path = "./Mangio-RVC-Fork/logs/GlaDOS/added_IVF2170_Flat_nprobe_1.index"
-    subprocess.run(["make", "run-cli"])
-    subprocess.run(["go", "infer"])
-    subprocess.run([model_path, input_file_name, output_file_name, index_path])
+    
+    process = subprocess.Popen(["make", "run-cli"], cwd=PATH_TO_RVC, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)    
+    process.stdin.write(b"go infer\n")
+    process.stdin.flush()
+    
+    args = (f"{model_path} {input_file_name} {output_file_name} {index_path}\n").encode()
+    print(args)
+    process.stdin.write(args)    
+    process.stdin.flush()
+
+    stdout, stderr = process.communicate()
+
+    print("Output:", stdout)
+    print("Error:", stderr)
+    
 
 
 def main():
