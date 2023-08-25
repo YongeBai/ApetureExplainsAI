@@ -1,12 +1,5 @@
 # ApetureExplainsAI
 
 How these it works:
-<iframe
-    width="640"
-    height="480"
-    src="https://youtu.be/ChW7tsAxKTY"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen
->
-</iframe>
+
+[![Watch the video](https://img.youtube.com/vi/ChW7tsAxKTY)](https://youtu.be/ChW7tsAxKTY)
